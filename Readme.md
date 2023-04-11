@@ -5,9 +5,9 @@ Welcome to the Sirius Artifact repository. This repository contains artifacts an
 
 The instructions for the artifacts provided are divided into the following sections:
 
-1. [Hardware](#hardware) - Provides the necessary files and instructions to design, optimize and fabricate the reconfigurable antenna and the envelope detector. The antenna designa nd fabrication files are found in the [./hardware_schematics](./hardware_schematics) folder.
+1. [Hardware](#hardware) - Provides the necessary files and instructions to design, optimize and fabricate the reconfigurable antenna and the envelope detector. The antenna design and fabrication files are found in the [./hardware_schematics](./hardware_schematics) folder.
 
-2. [Software](#software) - Provides the scripts, datasets and pretrained models to evaluate the angle-of-arrival estimation performance of the system. The matlab script [./aoa_performance/evaluate_aoa_estimation.m](./aoa_performance/evaluate_aoa_estimation.m) can be used to evaluate the performance of the AoA estimation algorithm.
+2. [Software](#software) - Provides the scripts, datasets and pretrained models to evaluate the angle-of-arrival estimation performance of the system. The matlab script [./aoa_performance/evaluate_aoa_estimation.m](./aoa_performance/evaluate_aoa_estimation.m) can be used to evaluate the performance of the AoA estimation.
 
 
 # Hardware
