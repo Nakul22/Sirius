@@ -1,14 +1,17 @@
 function evaluate_aoa_estimation()
     close all; clear all; clc;
 
-    % Trained model filename
-    model_filename = "model_900mhz_4switches";
+    % Test data filename
+    test_data_filename = "./collected_data.mat";
 
     % Load dataset
-    load("./collected_data.mat", "ml_features_test", "ground_truth_angles_test");
+    load(test_data_filename, "ml_features_test", "ground_truth_angles_test");
+
+    % Trained model filename
+    model_filename = "./model_900mhz_4switches.mat";
 
     % Load model
-    load("./"+model_filename+".mat", "net_regression");
+    load(model_filename, "net_regression");
 
     angle_index_output = 1;
     shape_ml_features = size(ml_features_test);

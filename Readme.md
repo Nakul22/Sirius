@@ -5,9 +5,9 @@ Welcome to the Sirius Artifact repository. This repository contains artifacts an
 
 The instructions for the artifacts provided are divided into the following sections:
 
-1. [Hardware](#hardware) - Provides the necessary files and instructions to design, optimize and fabricate the reconfigurable antenna and the envelope detector.
+1. [Hardware](#hardware) - Provides the necessary files and instructions to design, optimize and fabricate the reconfigurable antenna and the envelope detector. The antenna designa nd fabrication files are found in the [./hardware_schematics](./hardware_schematics) folder.
 
-2. [Software](#software) - Provides the scripts, datasets and pretrained models to evaluate the angle-of-arrival estimation performance of the system.
+2. [Software](#software) - Provides the scripts, datasets and pretrained models to evaluate the angle-of-arrival estimation performance of the system. The matlab script [./aoa_performance/evaluate_aoa_estimation.m](./aoa_performance/evaluate_aoa_estimation.m) can be used to evaluate the performance of the AoA estimation algorithm.
 
 
 # Hardware
@@ -35,11 +35,11 @@ To help visualize the designed antenna's gain-patterns and S11 return loss (refl
 
 ## Antenna Fabrication
 
-We have provided BRD files for pre-tuned 900MHz and 2.4GHz antennas to allow users to directly fabricate the hardware. These files can be found in the [./hardware-schematics/reconfigurable_antennas](./hardware-schematics/reconfigurable_antennas) folder. For our prototypes, we used 1.5mm thick FR4 substrate and the Bantam PCB milling machine to fabricate double-sided PCBs. The antenna consists of two pin-diode switches along with DC blocking circuits, and the BRD file has solder pad placeholders for these components. While we used BAR50-02v pin-diodes in our prototype, any RF grade pin-diode should also work. We also utilized inductors as RF chokes to block AC current and isolate other wires from the antenna, resulting in improved performance. Additional details about antenna fabrication can be found in the accompanying paper.
+We have provided BRD files for pre-tuned 900MHz and 2.4GHz antennas to allow users to directly fabricate the hardware. These files can be found in the [./hardware_schematics/reconfigurable_antennas](./hardware_schematics/reconfigurable_antennas) folder. For our prototypes, we used 1.5mm thick FR4 substrate and the Bantam PCB milling machine to fabricate double-sided PCBs. The antenna consists of two pin-diode switches along with DC blocking circuits, and the BRD file has solder pad placeholders for these components. While we used BAR50-02v pin-diodes in our prototype, any RF grade pin-diode should also work. We also utilized inductors as RF chokes to block AC current and isolate other wires from the antenna, resulting in improved performance. Additional details about antenna fabrication can be found in the accompanying paper.
 
 ## Envelope Detector
 
-An envelope detector is used to extract the envelope of the received signal. We implemented a simple envelope detector circuit, which includes schottky diodes as rectifiers, a low pass filter, and an impedance matching network. The diode rectifies the signal, and the low pass filter eliminates high-frequency components. The schematic and BRD files for the envelope detector are available in the [./hardware-schematics/envelope_detector/](./hardware-schematics/envelope_detector/)" folder. Reference values for the low pass filter can be found in the paper.
+An envelope detector is used to extract the envelope of the received signal. We implemented a simple envelope detector circuit, which includes schottky diodes as rectifiers, a low pass filter, and an impedance matching network. The diode rectifies the signal, and the low pass filter eliminates high-frequency components. The schematic and BRD files for the envelope detector are available in the [./hardware_schematics/envelope_detector/](./hardware_schematics/envelope_detector/)" folder. Reference values for the low pass filter can be found in the paper.
 
 Although not required, an impedance matching network can improve the sensitivity and range of the receiver. This network is used to match the impedance of the envelope detector to the impedance of the designed antenna (50ohms). The schematic and BRD files contain solder pads for capacitors and inductors in a pi-network. Users can choose to use the provided schematic or modify it based on their implementation. We suggest using a Vector Network Analyzer (VNA) to measure the impedance of both the antenna and the envelope detector for precise matching.
 
