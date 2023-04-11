@@ -9,6 +9,7 @@ The instructions for the artifacts provided are divided into the following secti
 
 2. [Software](#software) - Provides the scripts, datasets and pretrained models to evaluate the angle-of-arrival estimation performance of the system.
 
+
 # Hardware
 
 ## Hardware requirements
