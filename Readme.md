@@ -5,15 +5,15 @@ Welcome to the Sirius Artifact repository. This repository contains artifacts an
 
 The instructions for the artifacts provided are divided into the following sections:
 
-1. Hardware - Provides the necessary files and instructions to design, optimize and fabricate the reconfigurable antenna and the envelope detector.
+1. [Hardware](#hardware) - Provides the necessary files and instructions to design, optimize and fabricate the reconfigurable antenna and the envelope detector.
 
-2. Software - Provides the scripts, datasets and pretrained models to evaluate the angle-of-arrival estimation performance of the system.
+2. [Software](#software) - Provides the scripts, datasets and pretrained models to evaluate the angle-of-arrival estimation performance of the system.
 
 # Hardware
 
 ## Hardware requirements
 
-The hardware setup requires various components and tools during the design and fabrication process. The table below lists the components/tools that we used for our prototype. The links are provided for reference only and the user can opt for any other component that is available to them.
+The hardware setup requires various components and tools during the design and fabrication process. Below is a list of components and tools we used for our prototype. However, users can choose to use any other available components.
 
 | Component/Tool  | Link |
 | ------------- | ------------- |
@@ -28,23 +28,25 @@ The hardware setup requires various components and tools during the design and f
 
 ## Antenna Design 
 
-The Sirius antenna prototypes are built for 900Mhz and 2.4Ghz ISM bands. We provide the Ansys HFSS design files for these antennas along with the Eagle schematic files for pcb fabrication. The HFSS design file can be found in "HFSS_design/HFSS_design_900Mhz.aedt". This file consists of the antenna model along with lumped components of the pin-diode based switches. The HFSS model of the antenna can be opened using Ansys HFSS 2022R2 and can be further tuned for any desired frequency based on the user's requirements.
+The Sirius antenna prototypes have been designed to operate in the 900MHz and 2.4GHz ISM bands. We provide the Ansys HFSS design files for these antennas, which can be used along with the Eagle schematic files for PCB fabrication. The HFSS design files are located in [./HFSS_design](./HFSS_design). The .aedt file consists of the antenna model as well as the lumped components of the pin-diode based switches. These files can be opened with Ansys HFSS 2022R2 and can be modified for any desired frequency based on user requirements.
 
-We have also provided an accompaning matlab script "HFSS_design/show_antenna_gain_pattern.m" to visualize the designed antenna's gain-patterns and S11 return loss (reflection coefficient).
+To help visualize the designed antenna's gain-patterns and S11 return loss (reflection coefficient), we have also included a MATLAB script called [./HFSS_design/show_antenna_gain_pattern.m](./HFSS_design/show_antenna_gain_pattern.m).
 
 ## Antenna Fabrication
 
-We have provided the brd files for pre-tuned 900Mhz and 2.4GHz antennas so that the user can directly fabricate the hardware. These file can be found in the folder "hardware/reconfigurable_antennas/". We used 1.5mm thick FR4 substrate for our prototyping. We used the Bantam PCB milling machine to fabricate the double sided PCBs. The antenna cosists of two pin-diode swicthes along with DC blocking circuits. The brd file has solder pad placeholders for these components. We used the BAR50-02v pin-diodes in our prototype, but any RF grade pin-diode will also work. We also used inductors as RF chokes to block AC current and isolate other wires from the antenna for better performance. More details about the antenna fabrication can be found in the paper.
+We have provided BRD files for pre-tuned 900MHz and 2.4GHz antennas to allow users to directly fabricate the hardware. These files can be found in the [./hardware/reconfigurable_antennas](./hardware/reconfigurable_antennas) folder. For our prototypes, we used 1.5mm thick FR4 substrate and the Bantam PCB milling machine to fabricate double-sided PCBs. The antenna consists of two pin-diode switches along with DC blocking circuits, and the BRD file has solder pad placeholders for these components. While we used BAR50-02v pin-diodes in our prototype, any RF grade pin-diode should also work. We also utilized inductors as RF chokes to block AC current and isolate other wires from the antenna, resulting in improved performance. Additional details about antenna fabrication can be found in the accompanying paper.
 
 ## Envelope Detector
 
-The envelope detector is used to extract the envelope of the received signal. We used a simple envelope detector circuit that consists of schottky diodes as rectifier, a low pass filter and an impedance mathcing network. The diode is used to rectify the signal and the low pass filter is used to filter out the high frequency components. The schematic and brd files for the envelope detector are provided in the folder "hardware/envelope_detector". Reference values of the low pass filter can be found in the paper.
+An envelope detector is used to extract the envelope of the received signal. We implemented a simple envelope detector circuit, which includes schottky diodes as rectifiers, a low pass filter, and an impedance matching network. The diode rectifies the signal, and the low pass filter eliminates high-frequency components. The schematic and BRD files for the envelope detector are available in the [./hardware/envelope_detector](./hardware/envelope_detector)" folder. Reference values for the low pass filter can be found in the paper.
 
-The impedance matching network is not required for the recevier, but it is recommended to improve the sensitivity and range of the receiver. It is used to match the impedance of the envelope detector to the impedance of the designed antenna (50ohms). The schematic and brd files contains solder pads to add capacitors and inductors in a pi-network. The user can use the provided schematic or modify it based on their implementation. We recommend using a Vector Network Analyzer (VNA) to measure the impedance of both the antenna and the envelope detector for precise matching.
+Although not required, an impedance matching network can improve the sensitivity and range of the receiver. This network is used to match the impedance of the envelope detector to the impedance of the designed antenna (50ohms). The schematic and BRD files contain solder pads for capacitors and inductors in a pi-network. Users can choose to use the provided schematic or modify it based on their implementation. We suggest using a Vector Network Analyzer (VNA) to measure the impedance of both the antenna and the envelope detector for precise matching.
 
 # Software
 
 ## Software requirements
+
+Sirius implementation used the folllwing software tools for antenna design, PCB fabrication, and data processing. The table below lists the software used for each process.
 
 | Process | Software used |
 | ------------- | ------------- |
@@ -52,7 +54,7 @@ The impedance matching network is not required for the recevier, but it is recom
 | PCB Fabrication  | Autodesk Eagle  |
 | Data processing  | Matlab  |
 
-The results have been validated on a Macbook Air M1 running Matlab 2023a. The provided scripts should work on any linux or windows machine as well, with the following add-on packages installed.
+We have validated the results on a Macbook Air M1 running Matlab 2023a. However, the provided scripts should work on any Linux or Windows machine with the following add-on packages installed.
 
 | Matlab add-on package  | Version |
 | ------------- | ------------- |
@@ -66,4 +68,4 @@ The results have been validated on a Macbook Air M1 running Matlab 2023a. The pr
 
 ## Angle-of-arrival Performance
 
-The performance of the angle-of-arrival (AoA) estimation can be evaluated using the sample dataset and matlab scripts provided in the folder "aoa_performance/". The dataset consists of collected gain-patterns for the 900Mhz reconfigurable antenna. The test data and pretrained model are both stored as .mat files. Running the script "evaluate_aoa_estimation.m" will load the test data and pretrained model and evaluate the performance of AoA estimation. The script will also plot the CDF of the angle-errors along with a scatter plot of the estimated angles. These are the core results of the paper shown in Figure 14 (a) and (b) that reflect the overall performance of the system.
+To evaluate the performance of the angle-of-arrival (AoA) estimation, we provide sample datasets and Matlab scripts in the [aoa_performance](./aoa_performance) folder. These datasets include real world experiments data collected for the 900Mhz reconfigurable antenna. The test data and pretrained model are stored as .mat files. Running the "evaluate_aoa_estimation.m" script will load the test data and pretrained model, and evaluate the AoA estimation performance. The script also generates plots of the CDF of angle-errors and a scatter plot of the estimated angles. These plots reflect the core results of the paper and demonstrate the overall system performance, as shown in section "AoA Performance" of the paper.
