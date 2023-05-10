@@ -7,7 +7,7 @@ The instructions for the artifacts provided are divided into the following secti
 
 1. [Hardware](#hardware) - Provides the necessary files and instructions to design, optimize and fabricate the reconfigurable antenna and the envelope detector. The antenna design and fabrication files are found in the [./hardware_schematics](./hardware_schematics) folder.
 
-2. [Software](#software) - Provides the scripts, datasets and pretrained models to evaluate the angle-of-arrival estimation performance of the system. The matlab script [./aoa_performance/evaluate_aoa_estimation.m](./aoa_performance/evaluate_aoa_estimation.m) can be used to evaluate the performance of the AoA estimation.
+2. [Software](#software) - Provides the scripts, datasets and pretrained models to evaluate the angle-of-arrival estimation performance of the system. The matlab script [./aoa_performance/evaluate_aoa_estimation.m](./aoa_performance/evaluate_aoa_estimation.m) can be used to evaluate the performance of the AoA estimation. The matlab script [./localization_performance/evaluate_localization.m](./localization_performance/evaluate_localization.m) can be used to evaluate the localization performance based on the estimated AoA results.
 
 
 # Hardware
@@ -70,3 +70,7 @@ We have validated the results on a Macbook Air M1 running Matlab 2023a. However,
 ## Angle-of-arrival Performance
 
 To evaluate the performance of the angle-of-arrival (AoA) estimation, we provide sample datasets and Matlab scripts in the [./aoa_performance](./aoa_performance) folder. These datasets include real world experiments data collected for the 900Mhz reconfigurable antenna. The test data and pretrained model are stored as .mat files. Running the "evaluate_aoa_estimation.m" script will load the test data and pretrained model, and evaluate the AoA estimation performance. The script also generates plots of the CDF of angle-errors and a scatter plot of the estimated angles. These plots reflect the core results of the paper and demonstrate the overall system performance, as shown in section "AoA Performance" of the paper.
+
+## Localization Performance
+
+To evaluate the performance of localization, we provide sample AoA outputs of all the outdoor expeirmentand corresponding Matlab scripts in the [./localization_performance](./localization_performance) folder. These datasets include real world experiments data collected for the 900Mhz reconfigurable antenna. The aoa results were obtained using the above mentined aoa scripts. Running the "evaluate_localization.m" script will load the aoa data and perform triangualtion to obtain the locations for each experiment iteration. The script also generates plots of the CDF of localization-errors. These plots reflect the localization results of the paper and demonstrate the overall system performance, as shown in evaluation section "Localization" of the paper.
